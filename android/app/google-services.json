@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "361391031789",
+    "project_id": "more-841c4",
+    "storage_bucket": "more-841c4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:361391031789:android:6b4967191ec4a3457213e4",
+        "android_client_info": {
+          "package_name": "com.more"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCOaZTOVC-169dZuGOKxkK5WE_7oOUC1_8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
