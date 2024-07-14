@@ -6,12 +6,30 @@
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "lint": "eslint .",
+    "lint-count": "eslint --format summary-chart src",
     "start": "react-native start",
-    "test": "jest"
+    "font": "npx react-native-asset",
+    "gclean": "cd android && ./gradlew clean && cd ..",
+    "all": "rm -rf node_modules && npm i && npm run gclean && npm run font",
+    "allr": "rm -rf node_modules && npm i && npm run gclean && npm run font && react-native start --reset-cache",
+    "il": "npm i -legacy-peer-deps"
   },
   "dependencies": {
+    "@react-native-firebase/app": "^20.1.0",
+    "@react-navigation/native": "^6.1.17",
+    "@react-navigation/native-stack": "^6.10.0",
+    "axios": "^1.7.2",
+    "luxon": "^3.4.4",
     "react": "18.2.0",
-    "react-native": "0.74.3"
+    "react-native": "0.74.3",
+    "react-native-extended-stylesheet": "^0.12.0",
+    "react-native-mmkv": "^3.0.0-beta.6",
+    "react-native-reanimated": "^3.14.0",
+    "react-native-safe-area-context": "^4.10.8",
+    "react-native-screens": "^3.32.0",
+    "react-native-simple-toast": "^3.3.1",
+    "react-native-svg": "^15.4.0",
+    "zustand": "^4.5.4"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
@@ -20,15 +38,11 @@
     "@react-native/babel-preset": "0.74.85",
     "@react-native/eslint-config": "0.74.85",
     "@react-native/metro-config": "0.74.85",
-    "@react-native/typescript-config": "0.74.85",
     "@types/react": "^18.2.6",
     "@types/react-test-renderer": "^18.0.0",
-    "babel-jest": "^29.6.3",
     "eslint": "^8.19.0",
-    "jest": "^29.6.3",
-    "prettier": "2.8.8",
-    "react-test-renderer": "18.2.0",
-    "typescript": "5.0.4"
+    "prettier": "^3.3.3",
+    "react-native-dotenv": "^3.4.11"
   },
   "engines": {
     "node": ">=18"
