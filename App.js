@@ -7,6 +7,7 @@ import React, { useEffect } from 'react';
 //     useColorScheme,
 //     Pressable,
 // } from 'react-native';
+import auth from '@react-native-firebase/auth';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 // import { LogLevel, OneSignal } from 'react-native-onesignal';
 import EStyleSheet from 'react-native-extended-stylesheet';
@@ -29,6 +30,20 @@ EStyleSheet.build({
 });
 
 const App = () => {
+    const [initializing, setInitializing] = useState(true);
+    const [user, setUser] = useState();
+
+    // Handle user state changes
+    const onAuthStateChanged = user => {
+        setUser(user);
+        if (initializing) setInitializing(false);
+    };
+
+    useEffect(() => {
+        const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
+        return subscriber; // unsubscribe on unmount
+    }, []);
+
     return (
         <SafeAreaProvider>
             <Navigation />
