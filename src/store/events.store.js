@@ -18,30 +18,37 @@ const MMKVzustandStorage = {
 
 const excludedKeys = [
     // 'user'
-    'user',
 ];
 
 const initStateData = {
-    user: null,
-    token: null,
+    events: [],
+    selectedEvent: null,
+    likedEvents: [],
 };
 
-export const useMainStore = create(
+export const useEventsStore = create(
     persist(
         set => ({
             ...initStateData,
 
-            setUser: data =>
+            setEvents: data =>
                 set(() => {
                     return {
-                        user: data,
+                        events: data,
                     };
                 }),
 
-            setToken: data =>
+            setSelectedEvent: data =>
                 set(() => {
                     return {
-                        token: data,
+                        selectedEvent: data,
+                    };
+                }),
+
+            setLikedEvents: data =>
+                set(() => {
+                    return {
+                        likedEvents: data,
                     };
                 }),
 
@@ -59,7 +66,7 @@ export const useMainStore = create(
             },
         }),
         {
-            name: 'main-store',
+            name: 'events-store',
             storage: createJSONStorage(() => MMKVzustandStorage),
             partialize: state =>
                 Object.fromEntries(

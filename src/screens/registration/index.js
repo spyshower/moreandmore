@@ -5,7 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 import auth from '@react-native-firebase/auth';
 import s from './styles';
 
-export const Login = () => {
+export const Registration = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [loading, setLoading] = useState(false);
@@ -13,32 +13,25 @@ export const Login = () => {
 
     const navigation = useNavigation();
 
-    const goToRegister = () => navigation.replace('registration');
+    const goToLogin = () => navigation.replace('login');
 
-    const onLogin = async () => {
-        console.logobject(auth());
-        console.log(username, password);
-        try {
-            auth()
-                .signInWithEmailAndPassword(username, username)
-                .then(() => {
-                    console.log('User account created & signed in!');
-                })
-                .catch(error => {
-                    if (error?.code === 'auth/email-already-in-use') {
-                        console.log('That email address is already in use!');
-                    }
+    const onRegister = () => {
+        auth()
+            .createUserWithEmailAndPassword(username, password)
+            .then(() => {
+                console.log('User account created & signed in!');
+            })
+            .catch(error => {
+                if (error?.code === 'auth/email-already-in-use') {
+                    console.log('That email address is already in use!');
+                }
 
-                    if (error?.code === 'auth/invalid-email') {
-                        console.log('That email address is invalid!');
-                    }
+                if (error?.code === 'auth/invalid-email') {
+                    console.log('That email address is invalid!');
+                }
 
-                    console.error(error);
-                });
-            setLoading(false);
-        } catch (e) {
-            console.log(e);
-        }
+                console.error(error);
+            });
     };
 
     return (
@@ -60,10 +53,10 @@ export const Login = () => {
 
             <View style={{ height: 100 }}>
                 {loading ? (
-                    <Text>Logging in...</Text>
+                    <Text>...</Text>
                 ) : (
-                    <Pressable style={s.button} onPress={onLogin}>
-                        <Text style={s.buttonText}>Είσοδος</Text>
+                    <Pressable style={s.button} onPress={onRegister}>
+                        <Text style={s.buttonText}>Register</Text>
                     </Pressable>
                 )}
             </View>
@@ -72,8 +65,8 @@ export const Login = () => {
                     <Text>{error?.code}</Text>
                 </View>
             )}
-            <Pressable onPress={goToRegister}>
-                <Text>go to register</Text>
+            <Pressable onPress={goToLogin}>
+                <Text>I have an account</Text>
             </Pressable>
         </View>
     );

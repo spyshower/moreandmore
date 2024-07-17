@@ -7,7 +7,6 @@ export const Textinput = ({
     onChangeText,
     styleLabel,
     styleInput = {},
-    ...props
 }) => {
     return (
         <>
@@ -16,7 +15,6 @@ export const Textinput = ({
                 onChangeText={onChangeText}
                 value={value}
                 style={{ ...s.input, ...styleInput }}
-                {...props}
             />
         </>
     );
